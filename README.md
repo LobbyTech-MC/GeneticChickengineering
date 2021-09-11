@@ -10,6 +10,14 @@
 [Slimefun](https://github.com/Slimefun/Slimefun4). 
 此外, 它使用Paper-specific(Paper-專用) API 調用, 因此在Spigot伺服器上不起作用.
 
+> 此為**非官方**版本, 請勿在該作者問題追蹤內回報! <br>
+> [原作連結](https://github.com/kii-chan-reloaded/GeneticChickengineering) | [非官方Discord](https://discord.gg/GF4CwjFXT9)
+
+| 非官方繁體中文版 | 官方英文版 |
+| -------- | -------- |
+| 點下方圖片下載 | 點下方圖片下載 |
+| [![Build Status](https://xMikux.github.io/builds/SlimeTraditionalTranslation/GeneticChickengineering/master/badge.svg)](https://xMikux.github.io/builds/SlimeTraditionalTranslation/GeneticChickengineering/master) | [![Build Status](https://thebusybiscuit.github.io/builds/kii-chan-reloaded/GeneticChickengineering/master/badge.svg)](https://thebusybiscuit.github.io/builds/kii-chan-reloaded/GeneticChickengineering/master) |
+
 ## 插件基礎
 *查看*
 [*wiki*](https://github.com/kii-chan-reloaded/GeneticChickengineering/wiki)
