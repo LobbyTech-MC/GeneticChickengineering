@@ -163,7 +163,7 @@ public class GeneticChickengineering extends JavaPlugin implements SlimefunAddon
 
     @Override
     public String getBugTrackerURL() {
-        return "https://github.com/xMikux/GeneticChickengineering/issues";
+        return "https://github.com/SlimeTraditionalTranslation/GeneticChickengineering/issues";
     }
 
     @Override
