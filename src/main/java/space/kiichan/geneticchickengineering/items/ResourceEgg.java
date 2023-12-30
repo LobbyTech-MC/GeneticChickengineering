@@ -10,13 +10,13 @@ import org.bukkit.World;
 import org.bukkit.block.Block;
 import org.bukkit.inventory.ItemStack;
 
+import io.github.thebusybiscuit.slimefun4.api.items.ItemGroup;
+import io.github.thebusybiscuit.slimefun4.api.items.SlimefunItemStack;
+import io.github.thebusybiscuit.slimefun4.api.recipes.RecipeType;
 import io.github.thebusybiscuit.slimefun4.core.attributes.NotPlaceable;
 import io.github.thebusybiscuit.slimefun4.core.handlers.ItemUseHandler;
 import io.github.thebusybiscuit.slimefun4.implementation.items.SimpleSlimefunItem;
-import me.mrCookieSlime.Slimefun.Lists.RecipeType;
-import me.mrCookieSlime.Slimefun.Objects.Category;
-import me.mrCookieSlime.Slimefun.api.SlimefunItemStack;
-import me.mrCookieSlime.Slimefun.cscorelib2.inventory.ItemUtils;
+import io.github.thebusybiscuit.slimefun4.libraries.dough.items.ItemUtils;
 import space.kiichan.geneticchickengineering.GeneticChickengineering;
 import space.kiichan.geneticchickengineering.genetics.DNA;
 
@@ -28,7 +28,7 @@ public class ResourceEgg extends SimpleSlimefunItem<ItemUseHandler> implements N
     private Material resource;
     private useAction action;
 
-    public ResourceEgg(GeneticChickengineering plugin, Category category, SlimefunItemStack item, Material resource, RecipeType recipeType, boolean allowedInNether) {
+    public ResourceEgg(GeneticChickengineering plugin, ItemGroup category, SlimefunItemStack item, Material resource, RecipeType recipeType, boolean allowedInNether) {
         super(category, item, recipeType, new ItemStack[] {null, null, null, null, makeFakeChicken(plugin, resource), null, null, null, null});
         this.resource = resource;
         if (resource == Material.WATER) {

@@ -6,7 +6,7 @@ import java.util.Set;
 
 import org.bukkit.command.PluginCommand;
 
-import me.mrCookieSlime.Slimefun.cscorelib2.config.Config;
+import io.github.thebusybiscuit.slimefun4.libraries.dough.config.Config;
 import space.kiichan.geneticchickengineering.GeneticChickengineering;
 import space.kiichan.geneticchickengineering.commands.subcommands.CalculateChance;
 import space.kiichan.geneticchickengineering.commands.subcommands.MakeChicken;

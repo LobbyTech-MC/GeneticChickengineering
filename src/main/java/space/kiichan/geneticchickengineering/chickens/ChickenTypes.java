@@ -7,10 +7,10 @@ import org.bukkit.Material;
 import org.bukkit.entity.LivingEntity;
 import org.bukkit.inventory.ItemStack;
 
-import io.github.thebusybiscuit.slimefun4.core.researching.Research;
+import io.github.thebusybiscuit.slimefun4.api.items.ItemGroup;
+import io.github.thebusybiscuit.slimefun4.api.recipes.RecipeType;
+import io.github.thebusybiscuit.slimefun4.api.researches.Research;
 import io.github.thebusybiscuit.slimefun4.implementation.SlimefunItems;
-import me.mrCookieSlime.Slimefun.Lists.RecipeType;
-import me.mrCookieSlime.Slimefun.Objects.Category;
 import space.kiichan.geneticchickengineering.items.GCEItems;
 
 public final class ChickenTypes {
@@ -107,7 +107,7 @@ public final class ChickenTypes {
         return (ItemStack) typemap.get(typing)[1];
     }
 
-    public static final void registerChickens(Research research, PocketChicken<LivingEntity> pc, Category category, RecipeType rt) {
+    public static final void registerChickens(Research research, PocketChicken<LivingEntity> pc, ItemGroup category, RecipeType rt) {
         for (int i=typemap.size()-1; i>-1; i--) {
             Object[] attrs = typemap.get(i);
             pc.fakeVariant(i, (String) attrs[0], category, rt);

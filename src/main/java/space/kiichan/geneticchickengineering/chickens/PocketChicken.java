@@ -20,13 +20,13 @@ import org.bukkit.persistence.PersistentDataType;
 import com.google.gson.JsonArray;
 import com.google.gson.JsonObject;
 
+import io.github.thebusybiscuit.slimefun4.api.items.ItemGroup;
+import io.github.thebusybiscuit.slimefun4.api.items.SlimefunItemStack;
+import io.github.thebusybiscuit.slimefun4.api.recipes.RecipeType;
 import io.github.thebusybiscuit.slimefun4.core.attributes.NotPlaceable;
 import io.github.thebusybiscuit.slimefun4.core.handlers.ItemUseHandler;
 import io.github.thebusybiscuit.slimefun4.implementation.items.SimpleSlimefunItem;
-import me.mrCookieSlime.Slimefun.Lists.RecipeType;
-import me.mrCookieSlime.Slimefun.Objects.Category;
-import me.mrCookieSlime.Slimefun.api.SlimefunItemStack;
-import me.mrCookieSlime.Slimefun.cscorelib2.inventory.ItemUtils;
+import io.github.thebusybiscuit.slimefun4.libraries.dough.items.ItemUtils;
 import space.kiichan.geneticchickengineering.GeneticChickengineering;
 import space.kiichan.geneticchickengineering.adapter.AnimalsAdapter;
 import space.kiichan.geneticchickengineering.genetics.DNA;
@@ -41,7 +41,7 @@ public class PocketChicken<T extends LivingEntity> extends SimpleSlimefunItem<It
     private int maxMutation;
     private boolean displayResources;
 
-    public PocketChicken(GeneticChickengineering plugin, Category category, SlimefunItemStack item, int mutationRate, int maxMutation, boolean displayResources, NamespacedKey dnakey, RecipeType recipeType, ItemStack[] recipe) {
+    public PocketChicken(GeneticChickengineering plugin, ItemGroup category, SlimefunItemStack item, int mutationRate, int maxMutation, boolean displayResources, NamespacedKey dnakey, RecipeType recipeType, ItemStack[] recipe) {
         super(category, item, recipeType, recipe);
         this.plugin = plugin;
         this.adapterkey = new NamespacedKey(plugin, "gce_pocket_chicken_adapter");
@@ -50,7 +50,7 @@ public class PocketChicken<T extends LivingEntity> extends SimpleSlimefunItem<It
         this.maxMutation = maxMutation;
         this.displayResources = displayResources;
     }
-    public PocketChicken(GeneticChickengineering plugin, Category category, SlimefunItemStack item, int mutationRate, int maxMutation, boolean displayResources, NamespacedKey adapterkey, NamespacedKey dnakey, RecipeType recipeType, ItemStack[] recipe) {
+    public PocketChicken(GeneticChickengineering plugin, ItemGroup category, SlimefunItemStack item, int mutationRate, int maxMutation, boolean displayResources, NamespacedKey adapterkey, NamespacedKey dnakey, RecipeType recipeType, ItemStack[] recipe) {
         super(category, item, recipeType, recipe);
         this.plugin = plugin;
         this.adapterkey = adapterkey;
@@ -140,7 +140,7 @@ public class PocketChicken<T extends LivingEntity> extends SimpleSlimefunItem<It
         return item;
     }
 
-    public void fakeVariant(int typing, String name, Category category, RecipeType rt) {
+    public void fakeVariant(int typing, String name, ItemGroup category, RecipeType rt) {
         // Returns a chicken variant of the typing
         // Just used for adding the variants to the guide
 
