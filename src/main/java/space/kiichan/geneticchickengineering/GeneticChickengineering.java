@@ -1,21 +1,5 @@
 package space.kiichan.geneticchickengineering;
 
-import java.io.File;
-import java.util.ArrayList;
-import java.util.List;
-import java.util.UUID;
-import java.util.logging.Logger;
-
-import org.bukkit.Material;
-import org.bukkit.NamespacedKey;
-import org.bukkit.World;
-import org.bukkit.entity.Chicken;
-import org.bukkit.entity.Entity;
-import org.bukkit.entity.LivingEntity;
-import org.bukkit.inventory.ItemStack;
-import org.bukkit.plugin.java.JavaPlugin;
-
-//import io.github.thebusybiscuit.cscorelib2.updater.GitHubBuildsUpdater;
 import io.github.thebusybiscuit.slimefun4.api.SlimefunAddon;
 import io.github.thebusybiscuit.slimefun4.api.items.ItemGroup;
 import io.github.thebusybiscuit.slimefun4.api.items.SlimefunItem;
@@ -27,8 +11,17 @@ import io.github.thebusybiscuit.slimefun4.libraries.dough.config.Config;
 import io.github.thebusybiscuit.slimefun4.libraries.dough.items.CustomItemStack;
 import io.papermc.lib.PaperLib;
 import me.mrCookieSlime.Slimefun.Objects.SlimefunItem.abstractItems.AContainer;
+import org.bukkit.Material;
+import org.bukkit.NamespacedKey;
+import org.bukkit.World;
+import org.bukkit.entity.Chicken;
+import org.bukkit.entity.Entity;
+import org.bukkit.entity.LivingEntity;
+import org.bukkit.inventory.ItemStack;
+import org.bukkit.plugin.java.JavaPlugin;
 import space.kiichan.geneticchickengineering.chickens.ChickenTypes;
 import space.kiichan.geneticchickengineering.chickens.PocketChicken;
+import space.kiichan.geneticchickengineering.commands.Commands;
 import space.kiichan.geneticchickengineering.database.DBUtil;
 import space.kiichan.geneticchickengineering.items.ChickenNet;
 import space.kiichan.geneticchickengineering.items.GCEItems;
@@ -38,6 +31,14 @@ import space.kiichan.geneticchickengineering.machines.ExcitationChamber;
 import space.kiichan.geneticchickengineering.machines.GeneticSequencer;
 import space.kiichan.geneticchickengineering.machines.PrivateCoop;
 import space.kiichan.geneticchickengineering.machines.RestorationChamber;
+
+import java.io.File;
+import java.util.ArrayList;
+import java.util.List;
+import java.util.UUID;
+import java.util.logging.Logger;
+
+//import io.github.thebusybiscuit.cscorelib2.updater.GitHubBuildsUpdater;
 
 public class GeneticChickengineering extends JavaPlugin implements SlimefunAddon {
 
@@ -87,11 +88,11 @@ public class GeneticChickengineering extends JavaPlugin implements SlimefunAddon
             new GitHubBuildsUpdater(this, getFile(), "kii-chan-reloaded/GeneticChickengineering/master").start();
         }*/
 
-        SlimefunItemStack chickenIcon = new SlimefunItemStack("GCE_ICON", "1638469a599ceef7207537603248a9ab11ff591fd378bea4735b346a7fae893", "&e基因工程", "", "&a> 点击查看");
-        SlimefunItemStack chickenDirectoryIcon = new SlimefunItemStack("GCE_DIRECTORY_ICON", new ItemStack(Material.BLAST_FURNACE), "&e基因工程产品", "", "&a> 点击查看");
+        SlimefunItemStack chickenIcon = new SlimefunItemStack("GCE_ICON", "1638469a599ceef7207537603248a9ab11ff591fd378bea4735b346a7fae893", "&e鸡因工程", "", "&a> 点击查看");
+        SlimefunItemStack chickenDirectoryIcon = new SlimefunItemStack("GCE_DIRECTORY_ICON", new ItemStack(Material.BLAST_FURNACE), "&e鸡因工程产品", "", "&a> 点击查看");
 
         ItemGroup category = new ItemGroup(categoryId, chickenIcon);
-        this.research = new Research(categoryId, 29841, "基因工程", 13);
+        this.research = new Research(categoryId, 29841, "鸡因工程", 13);
         ItemGroup chickDir = new ItemGroup(chickenDirectoryId, chickenDirectoryIcon);
 
         ItemStack[] nullRecipe = new ItemStack[] { null, null, null, null, null, null, null, null, null };
@@ -113,6 +114,10 @@ public class GeneticChickengineering extends JavaPlugin implements SlimefunAddon
             SlimefunItems.LEAD_INGOT, SlimefunItems.BLISTERING_INGOT_3, SlimefunItems.LEAD_INGOT,
             SlimefunItems.BLISTERING_INGOT_3, GCEItems.EXCITATION_CHAMBER, SlimefunItems.BLISTERING_INGOT_3,
             SlimefunItems.LEAD_INGOT, SlimefunItems.BLISTERING_INGOT_3, SlimefunItems.LEAD_INGOT});
+        ExcitationChamber excitationChamber10 = new ExcitationChamber(this, category, GCEItems.EXCITATION_CHAMBER_10, resFailRate, resBaseTime, RecipeType.ANCIENT_ALTAR, new ItemStack[]{
+                SlimefunItems.MAGIC_LUMP_3, SlimefunItems.NUCLEAR_REACTOR, SlimefunItems.MAGIC_LUMP_3,
+                SlimefunItems.REINFORCED_PLATE, GCEItems.EXCITATION_CHAMBER_2, SlimefunItems.REINFORCED_PLATE,
+                SlimefunItems.MAGIC_LUMP_3, SlimefunItems.URANIUM, SlimefunItems.MAGIC_LUMP_3});
         PrivateCoop privateCoop = new PrivateCoop(this, category, GCEItems.PRIVATE_COOP, RecipeType.ENHANCED_CRAFTING_TABLE, new ItemStack[]{
             new ItemStack(Material.BIRCH_PLANKS), new ItemStack(Material.BIRCH_PLANKS), new ItemStack(Material.BIRCH_PLANKS),
             new ItemStack(Material.JUKEBOX), new ItemStack(Material.RED_BED), new ItemStack(Material.POPPY),
@@ -134,6 +139,7 @@ public class GeneticChickengineering extends JavaPlugin implements SlimefunAddon
         registerToAll(privateCoop.setCapacity(30).setEnergyConsumption(1).setProcessingSpeed(1));
         registerToAll(excitationChamber.setCapacity(250).setEnergyConsumption(5).setProcessingSpeed(1));
         registerToAll(excitationChamber2.setCapacity(1000).setEnergyConsumption(10).setProcessingSpeed(2));
+        registerToAll(excitationChamber10.setCapacity(5000).setEnergyConsumption(50).setProcessingSpeed(10));
         if (this.doPain) {
             int healRate = this.clamp(1, cfg.getOrSetDefault("options.heal-rate", 2), 120);
             RestorationChamber restorationChamber = new RestorationChamber(this, category, healRate, GCEItems.RESTORATION_CHAMBER, RecipeType.ENHANCED_CRAFTING_TABLE, new ItemStack[]{
@@ -146,6 +152,8 @@ public class GeneticChickengineering extends JavaPlugin implements SlimefunAddon
         // Fill all resource chickens into the book
         ChickenTypes.registerChickens(research, this.pocketChicken, chickDir, fromChicken);
         research.register();
+
+        new Commands(this, cfg);
 
         // Register listener to clean up database on world save
         new WorldSavedListener(this);
@@ -160,7 +168,7 @@ public class GeneticChickengineering extends JavaPlugin implements SlimefunAddon
 
     @Override
     public String getBugTrackerURL() {
-        return "https://github.com/xMikux/GeneticChickengineering/issues";
+        return "https://github.com/CrispyXYZ/GeneticChickengineering-CN-RC30-Extended/issues";
     }
 
     @Override

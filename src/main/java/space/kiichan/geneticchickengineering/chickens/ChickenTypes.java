@@ -1,17 +1,17 @@
 package space.kiichan.geneticchickengineering.chickens;
 
-import java.util.LinkedHashMap;
-import java.util.Map;
-
-import org.bukkit.Material;
-import org.bukkit.entity.LivingEntity;
-import org.bukkit.inventory.ItemStack;
-
 import io.github.thebusybiscuit.slimefun4.api.items.ItemGroup;
 import io.github.thebusybiscuit.slimefun4.api.recipes.RecipeType;
 import io.github.thebusybiscuit.slimefun4.api.researches.Research;
 import io.github.thebusybiscuit.slimefun4.implementation.SlimefunItems;
+import org.bukkit.Material;
+import org.bukkit.entity.LivingEntity;
+import org.bukkit.inventory.ItemStack;
+
 import space.kiichan.geneticchickengineering.items.GCEItems;
+
+import java.util.LinkedHashMap;
+import java.util.Map;
 
 public final class ChickenTypes {
 
@@ -30,8 +30,8 @@ public final class ChickenTypes {
              */
             put(63, new Object[]{"羽毛",new ItemStack(Material.FEATHER)});
             put(31, new Object[]{"骨头",new ItemStack(Material.BONE)});
-            put(47, new Object[]{"原石",new ItemStack(Material.COBBLESTONE)});
-            put(55, new Object[]{"土",new ItemStack(Material.DIRT)});
+            put(47, new Object[]{"圆石",new ItemStack(Material.COBBLESTONE)});
+            put(55, new Object[]{"泥土",new ItemStack(Material.DIRT)});
             put(59, new Object[]{"燧石",new ItemStack(Material.FLINT)});
             put(61, new Object[]{"沙子",new ItemStack(Material.SAND)});
             put(62, new Object[]{"水", GCEItems.WATER_EGG});
@@ -49,7 +49,7 @@ public final class ChickenTypes {
             put(54, new Object[]{"橡木原木",new ItemStack(Material.OAK_LOG)});
             put(57, new Object[]{"火药",new ItemStack(Material.GUNPOWDER)});
             put(58, new Object[]{"海带",new ItemStack(Material.KELP)});
-            put(60, new Object[]{"史萊姆球",new ItemStack(Material.SLIME_BALL)});
+            put(60, new Object[]{"黏液球",new ItemStack(Material.SLIME_BALL)});
             put(7, new Object[]{"金锭",new ItemStack(Material.GOLD_INGOT)});
             put(11, new Object[]{"下界岩",new ItemStack(Material.NETHERRACK)});
             put(13, new Object[]{"玻璃",new ItemStack(Material.GLASS)});
@@ -88,7 +88,7 @@ public final class ChickenTypes {
             put(1, new Object[]{"钻石",new ItemStack(Material.DIAMOND)});
             put(2, new Object[]{"末地石",new ItemStack(Material.END_STONE)});
             put(4, new Object[]{"海晶砂砾",new ItemStack(Material.PRISMARINE_CRYSTALS)});
-            put(8, new Object[]{"海景碎片",new ItemStack(Material.PRISMARINE_SHARD)});
+            put(8, new Object[]{"海晶碎片",new ItemStack(Material.PRISMARINE_SHARD)});
             put(16, new Object[]{"经验",new ItemStack(Material.EXPERIENCE_BOTTLE)});
             put(32, new Object[]{"绿宝石",new ItemStack(Material.EMERALD)});
             put(0, new Object[]{"下界合金锭",new ItemStack(Material.NETHERITE_INGOT)});

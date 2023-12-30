@@ -4,9 +4,10 @@ import java.util.HashMap;
 import java.util.Map;
 import java.util.Set;
 
+import io.github.thebusybiscuit.slimefun4.libraries.dough.config.Config;
 import org.bukkit.command.PluginCommand;
 
-import io.github.thebusybiscuit.slimefun4.libraries.dough.config.Config;
+
 import space.kiichan.geneticchickengineering.GeneticChickengineering;
 import space.kiichan.geneticchickengineering.commands.subcommands.CalculateChance;
 import space.kiichan.geneticchickengineering.commands.subcommands.MakeChicken;

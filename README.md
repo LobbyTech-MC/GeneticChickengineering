@@ -1,76 +1,45 @@
-# 基因工程雞
+## 鸡因工程
+***
 
-![License](https://img.shields.io/github/license/kii-chan-reloaded/GeneticChickengineering) ![Build](https://github.com/kii-chan-reloaded/GeneticChickengineering/workflows/Java%20CI%20with%20Maven/badge.svg)
+Extended版新增内容：
+- 终极鼓舞室（速度x10）
 
-基因工程雞是一種原先有的資源所實現的雞, 啟發於SetyCz有名的Forge模組Chicken.
-兩者的區別主要在於, Chicken具有預定的養育樹, 基因工程雞使用非常基本的模擬遺傳學來確定雞的生長方向
-(這意味著你需要查詢在 [Punnett squares](https://en.wikipedia.org/wiki/Punnett_square)).
+<p align="center">
+  <a href="https://github.com/CrispyXYZ/GeneticChickengineering-CN-RC30-Extended/actions/workflows/maven.yml">
+    <img src="https://github.com/CrispyXYZ/GeneticChickengineering-CN-RC30-Extended/actions/workflows/maven.yml/badge.svg" alt="Java CI" />
+  </a>
+  <a href="https://builds.guizhanss.net/CrispyXYZ/GeneticChickengineering-CN-RC30-Extended/master">
+    <img src="https://builds.guizhanss.net/f/CrispyXYZ/GeneticChickengineering-CN-RC30-Extended/master/badge.svg" alt="Build status" />
+  </a>
+</p>
 
-這是中期向的附加對於
-[Slimefun](https://github.com/Slimefun/Slimefun4). 
-此外, 它使用Paper-specific(Paper-專用) API 調用, 因此在Spigot伺服器上不起作用.
 
-## 插件基礎
-*查看*
-[*wiki*](https://github.com/kii-chan-reloaded/GeneticChickengineering/wiki)
-*來了解更多詳細訊息*
+![License](https://img.shields.io/github/license/kii-chan-reloaded/GeneticChickengineering)
 
-主世界的雞幾乎已完全占主導地位的"正常"雞
-今天我們還是知道與愛著, 但是有些雞具有潛在力
-有了正確的工具, 時間和照顧, 這項潛在力量可能
-會被發現, 並釋放出雞的真正潛力!
+鸡因工程是资源鸡的实现基础，其灵感来自于 SetyCz 流行的 Forge mod Chicken。
 
-對雞的基因改良第一步是製造雞網
-讓它變成袋子雞. 下一步, 建造一個基因測序儀來分析袋子雞的基因種類,
-當你收集了兩隻或更多良好的雞時,合成私人雞舍然後讓雞做它的事業.
-過了一些時間, 它們會骰出基因骰子並生出一個孩子!
-從那, 釋放小雞讓他長大, 然後循環
-繼續.
+两者之间的主要区别在于，虽然鸡具有预先确定的鸡育种树，但鸡因工程使用非常基本的遗传学模拟来确定鸡的进展。
 
-最終, 你的努力將得到一種特殊的雞, 該雞可以產生資源!
-但是, 它們不能獨自做到這點... 這就是鼓舞室的工作時間. 放入至少一隻雞
-純合隱性等位基因(一組兩個小寫字母) 它們金開始生產資源!
-並非所有雞生產的資源速度都相同. 由於受到來自雜合等位基因對(一顯性和一隱性),
-只有純基因對會比雜基因對還要快. 在鼓舞室安裝一些物流節點, 以保持穩定,
-永無休止地提供不同的資源!
+这意味着你需要复习一下鸡的基因工程学: [Punnett squares](https://en.wikipedia.org/wiki/Punnett_square)。
 
-查看 [序列表](https://github.com/kii-chan-reloaded/GeneticChickengineering/wiki/Sequencing-Guide)
-或在遊戲中的Slimefun指南來了解如何製作特定的資源,
-或者開始瘋狂地繁殖雞直到你有所有64個品種
+这是中期向的[粘液科技](https://github.com/StarWishsama/Slimefun4)附属。
 
-此為**非官方**版本, 請勿在該作者的問題追蹤內回報! <br>
-且翻譯有很多處讀起來很怪的 歡迎修正! <br>
-[原專案連結](https://github.com/kii-chan-reloaded/GeneticChickengineering)
+此外, 它使用Paper-specific(Paper-专用) API 调用, 因此在Spigot服务器上无法使用。
 
-## 圖片
+### 插件基础与介绍
 
-![A basic machine overview](/images/gce_machines.png)
+有关更多详细信息，请参阅[wiki（简体中文）](https://github.com/CrispyXYZ/GeneticChickengineering-CN-RC30-Extended/wiki)
 
-------
+主世界的鸡大多数都是占主导地位的正常鸡，但是有些鸡具有潜在的力量。这些鸡有了正确的工具、时间和充足的照顾，它们的真正潜力也许能够被发掘出来。
 
-![A baby chicken fresh out of the Genetic Sequencer](/images/gce_genseq.png)
+对鸡进行基因改良的第一步是制作鸡网并将一些鸡携带起来。接下来，制作一个基因测序仪来分析装有鸡的袋子并了解它的基因型。当您收集到两只或更多良好的鸡时，制作一个私人鸡舍并将您的鸡放进去。一段时间后，他们将掷出基因骰子并生下一个带有这个随机基因的小鸡！让它们长大成为一只真正的鸡，真正的可循环。
 
-------
+最终，你的努力将获得一只可以生产资源的特殊鸡！但是，他们无法单独生产……这就是鼓舞室有用的地方。放入具有至少一对纯合隐性等位基因（一组两个小写字母）的鸡，它将开始产生资源。不过，并非所有基因类型的鸡都会以相同的速度生产资源。由于杂合等位基因对（一个显性和一个隐性）的干扰，只有纯合对的鸡比具有杂合基因的鸡更快地生产资源。将一些货运节点添加到鼓舞室，以保持稳定、永无止境的不同资源供应！
 
-![An experience chicken working](/images/gce_excham.png)
+查看[序列表](https://github.com/kii-chan-reloaded/GeneticChickengineering/wiki/Sequencing-Guide)或游戏内的 Slimefun 指南以了解如何制作特定资源。或者开始疯狂饲养鸡，直到拥有所有 64 个品种！
 
-------
+此为**非官方**版本, 请勿在原作者的Issues内汇报bug!
 
-在默認情況下, 雞將在顯示它的資源在自定義名稱前與顯示其雞的基因序. 
-如果雞已經有一個特殊名稱, 那資源將會被附加添加至該名稱的尾部. 
-這項特徵可以在插件的`config.yml`中關閉.
+且翻译有很多处读起来很怪的，欢迎修正!
 
-![A nether quartz chicken named Crystal](/images/gce_names.png)
-
-## Thanks
-
-None of this would be possible if it weren't for TheBusyBiscuit's hard work on
-Slimefun, as well as the tremendously helpful Developer's Guide. Furthermore, a 
-significant portion of this addon uses similar or identical code from
-MobCapturer, and this project would not have gotten off the ground without it.
-
-## Issues/Requests
-
-If you have any issues or feature requests, feel free to open an issue about it.
-If you're experiencing bugs, please provide any relevent server logs in your
-issue.
+[原仓库链接](https://github.com/kii-chan-reloaded/GeneticChickengineering)

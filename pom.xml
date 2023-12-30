@@ -66,12 +66,8 @@
                 <configuration>
                     <relocations>
                         <relocation>
-                            <pattern>io.github.thebusybiscuit.cscorelib2</pattern>
-                            <shadedPattern>space.kiichan.geneticchickengineering.cscorelib2</shadedPattern>
-                        </relocation>
-                        <relocation>
-                            <pattern>io.papermc.lib</pattern>
-                            <shadedPattern>space.kiichan.geneticchickengineering.paperlib</shadedPattern>
+                            <pattern>io.github.bakedlibs.dough</pattern>
+                            <shadedPattern>space.kiichan.geneticchickengineering.dough</shadedPattern>
                         </relocation>
                     </relocations>
                 </configuration>
@@ -113,7 +109,7 @@
         <dependency>
             <groupId>io.papermc</groupId>
             <artifactId>paperlib</artifactId>
-            <version>1.0.6</version>
+            <version>1.0.7</version>
             <scope>compile</scope>
         </dependency>
 

@@ -36,7 +36,7 @@ public class CalculateChance extends Subcommand {
     public CalculateChance(GeneticChickengineering plugin, Commands commands, String permissionName) {
         super(plugin, commands, permissionName);
         this.setName("calculatechance");
-        this.setHelp("Usage: /gce calculatechance <parent DNA> <parent DNA> <child DNA>");
+        this.setHelp("用法: /gce calculatechance <parent DNA> <parent DNA> <child DNA>");
         this.commands.register(this);
     }
 
@@ -77,14 +77,14 @@ public class CalculateChance extends Subcommand {
             long readableChance = Math.round(chanceTotal*100);
             String message = "有 "+readableChance+"% 几率";
             if (chanceTotal > 0 && chanceTotal < 100) {
-                message = message + "(roughly 1 in "+Math.round(1/chanceTotal)+" odds) ";
+                message = message + "（约"+Math.round(1/chanceTotal)+"分之一几率) ";
             }
-            message = message + "that ("+p1dna.toString()+
-                ") and ("+p2dna.toString()+") will produce a ("+cdna.toString()+
-                ") child";
+            message = message + "使（"+p1dna.toString()+
+                "）与（"+p2dna.toString()+"）产生一个（"+cdna.toString()+
+                "）";
             sender.sendMessage(message);
         } else {
-            sender.sendMessage("该命令必须由有权限的玩家触发");
+            sender.sendMessage("您没有权限执行此命令");
         }
         return true;
     }

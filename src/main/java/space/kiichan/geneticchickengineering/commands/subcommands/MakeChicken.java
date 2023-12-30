@@ -37,7 +37,7 @@ public class MakeChicken extends Subcommand {
     public MakeChicken(GeneticChickengineering plugin, Commands commands, String permissionName) {
         super(plugin, commands, permissionName);
         this.setName("makechicken");
-        this.setHelp("Usage: /gce makechicken <dna>");
+        this.setHelp("用法: /gce makechicken <dna>");
         this.commands.register(this);
     }
 
@@ -49,7 +49,7 @@ public class MakeChicken extends Subcommand {
         }
         String notation = args[args.length-1];
         if (!DNA.isValidSequence(notation)) {
-            sender.sendMessage("DNA notation invalid for "+notation);
+            sender.sendMessage("DNA序列无效： "+notation);
             return true;
         }
 
@@ -62,7 +62,7 @@ public class MakeChicken extends Subcommand {
                 ((Player) sender).getWorld().dropItemNaturally( ((Player) sender).getLocation().toCenterLocation(), dropchick);
             }
         } else {
-            sender.sendMessage("Command must be executed by a player with permission");
+            sender.sendMessage("您没有权限执行此命令");
         }
         return true;
     }

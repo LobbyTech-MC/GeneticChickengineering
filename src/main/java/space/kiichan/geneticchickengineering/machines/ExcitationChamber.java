@@ -1,13 +1,5 @@
 package space.kiichan.geneticchickengineering.machines;
 
-import java.util.HashMap;
-import java.util.Map;
-
-import org.bukkit.Material;
-import org.bukkit.Sound;
-import org.bukkit.block.Block;
-import org.bukkit.inventory.ItemStack;
-
 import io.github.thebusybiscuit.slimefun4.api.items.ItemGroup;
 import io.github.thebusybiscuit.slimefun4.api.items.SlimefunItemStack;
 import io.github.thebusybiscuit.slimefun4.api.recipes.RecipeType;
@@ -17,20 +9,31 @@ import io.github.thebusybiscuit.slimefun4.libraries.dough.inventory.InvUtils;
 import io.github.thebusybiscuit.slimefun4.libraries.dough.items.CustomItemStack;
 import io.github.thebusybiscuit.slimefun4.libraries.dough.items.ItemUtils;
 import io.github.thebusybiscuit.slimefun4.utils.ChestMenuUtils;
+import com.xzavier0722.mc.plugin.slimefun4.storage.controller.SlimefunBlockData;
+import com.xzavier0722.mc.plugin.slimefun4.storage.util.StorageCacheUtils;
 import me.mrCookieSlime.Slimefun.Objects.SlimefunItem.abstractItems.AContainer;
 import me.mrCookieSlime.Slimefun.Objects.SlimefunItem.abstractItems.MachineRecipe;
-import me.mrCookieSlime.Slimefun.api.BlockStorage;
 import me.mrCookieSlime.Slimefun.api.inventory.BlockMenu;
 import me.mrCookieSlime.Slimefun.api.inventory.BlockMenuPreset;
+import org.bukkit.Material;
+import org.bukkit.Sound;
+import org.bukkit.block.Block;
+import org.bukkit.inventory.ItemStack;
+
+import org.bukkit.inventory.meta.ItemMeta;
 import space.kiichan.geneticchickengineering.GeneticChickengineering;
 import space.kiichan.geneticchickengineering.chickens.PocketChicken;
+
+import java.util.HashMap;
+import java.util.Map;
 
 public class ExcitationChamber extends AContainer {
     private GeneticChickengineering plugin;
     private final PocketChicken pc;
     private ItemStack currentResource;
     public static Map<BlockMenu, ItemStack> resources = new HashMap<>();
-    private final ItemStack blackPane = new CustomItemStack(Material.BLACK_STAINED_GLASS_PANE, " ");
+
+    private static final ItemStack blackPane = createSimpleItem(Material.BLACK_STAINED_GLASS_PANE, "&r&0 ");
     private int failRate;
     private int baseTime;
 
@@ -43,11 +46,21 @@ public class ExcitationChamber extends AContainer {
         this.baseTime = baseTime;
     }
 
+    public static ItemStack createSimpleItem(Material material, String name) {
+        ItemStack item = new ItemStack(material);
+        ItemMeta meta = item.getItemMeta();
+        if (meta != null) {
+            meta.setDisplayName(name.replace("&", "§"));
+        }
+        item.setItemMeta(meta);
+        return item;
+    }
+
     private Block initBlock(Block b) {
         // Hacky way to get the progress bar to be the resource without sharing
         // the progress bar amongst all the excitation chambers
-        BlockMenu inv = BlockStorage.getInventory(b);
-        this.currentResource = this.resources.getOrDefault(inv, this.blackPane);
+        BlockMenu inv = StorageCacheUtils.getMenu(b.getLocation());
+        this.currentResource = this.resources.getOrDefault(inv, this.blackPane.clone());
         return b;
     }
 
@@ -84,7 +97,7 @@ public class ExcitationChamber extends AContainer {
             preset.addItem(i, ChestMenuUtils.getOutputSlotTexture(), ChestMenuUtils.getEmptyClickHandler());
         }
 
-        preset.addItem(22, this.blackPane, ChestMenuUtils.getEmptyClickHandler());
+        preset.addItem(22, this.blackPane.clone(), ChestMenuUtils.getEmptyClickHandler());
 
         for (int i : getOutputSlots()) {
             preset.addMenuClickHandler(i, (player, slot, cursor, action) -> {
@@ -96,12 +109,12 @@ public class ExcitationChamber extends AContainer {
     @Override
     protected void tick(Block b) {
         super.tick(this.initBlock(b));
-        BlockMenu inv = BlockStorage.getInventory(b);
+        BlockMenu inv = StorageCacheUtils.getMenu(b.getLocation());
         MachineProcessor<CraftingOperation> processor = getMachineProcessor();
         if (processor.getOperation(b) != null) {
             if (this.findNextRecipe(inv) == null) {
             	processor.endOperation(b);
-                inv.replaceExistingItem(22, this.blackPane);
+                inv.replaceExistingItem(22, this.blackPane.clone());
                 this.resources.remove(inv);
             }
         } else if (this.resources.containsKey(inv)) {

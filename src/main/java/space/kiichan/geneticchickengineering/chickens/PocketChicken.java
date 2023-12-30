@@ -1,13 +1,17 @@
 package space.kiichan.geneticchickengineering.chickens;
 
-import java.util.LinkedList;
-import java.util.List;
-import java.util.Optional;
-
-import org.bukkit.ChatColor;
-import org.bukkit.GameMode;
-import org.bukkit.Location;
-import org.bukkit.NamespacedKey;
+import com.google.gson.JsonArray;
+import com.google.gson.JsonObject;
+import io.github.thebusybiscuit.slimefun4.api.items.ItemGroup;
+import io.github.thebusybiscuit.slimefun4.api.items.SlimefunItemStack;
+import io.github.thebusybiscuit.slimefun4.api.recipes.RecipeType;
+import io.github.thebusybiscuit.slimefun4.core.attributes.DistinctiveItem;
+import io.github.thebusybiscuit.slimefun4.core.attributes.NotPlaceable;
+import io.github.thebusybiscuit.slimefun4.core.handlers.ItemUseHandler;
+import io.github.thebusybiscuit.slimefun4.implementation.items.SimpleSlimefunItem;
+import io.github.thebusybiscuit.slimefun4.libraries.dough.items.ItemUtils;
+import io.github.thebusybiscuit.slimefun4.utils.SlimefunUtils;
+import org.bukkit.*;
 import org.bukkit.block.Block;
 import org.bukkit.entity.Chicken;
 import org.bukkit.entity.LivingEntity;
@@ -27,11 +31,17 @@ import io.github.thebusybiscuit.slimefun4.core.attributes.NotPlaceable;
 import io.github.thebusybiscuit.slimefun4.core.handlers.ItemUseHandler;
 import io.github.thebusybiscuit.slimefun4.implementation.items.SimpleSlimefunItem;
 import io.github.thebusybiscuit.slimefun4.libraries.dough.items.ItemUtils;
+
+import org.jetbrains.annotations.NotNull;
 import space.kiichan.geneticchickengineering.GeneticChickengineering;
 import space.kiichan.geneticchickengineering.adapter.AnimalsAdapter;
 import space.kiichan.geneticchickengineering.genetics.DNA;
 
-public class PocketChicken<T extends LivingEntity> extends SimpleSlimefunItem<ItemUseHandler> implements NotPlaceable {
+import java.util.LinkedList;
+import java.util.List;
+import java.util.Optional;
+
+public class PocketChicken<T extends LivingEntity> extends SimpleSlimefunItem<ItemUseHandler> implements NotPlaceable, DistinctiveItem {
 
     private final AnimalsAdapter<Chicken> adapter = new AnimalsAdapter<>(Chicken.class);
     private final NamespacedKey adapterkey;
@@ -217,6 +227,11 @@ public class PocketChicken<T extends LivingEntity> extends SimpleSlimefunItem<It
     @Override
     public ItemUseHandler getItemHandler() {
         return e -> {
+            if (e.getItem().getType()!=Material.PLAYER_HEAD) {
+                ItemStack real = new ItemStack(e.getItem().getType(), e.getItem().getAmount());
+                e.getItem().setItemMeta(real.getItemMeta());
+                return;
+            }
             e.cancel();
 
             Optional<Block> block = e.getClickedBlock();
@@ -245,13 +260,13 @@ public class PocketChicken<T extends LivingEntity> extends SimpleSlimefunItem<It
                 }
                 String name = "("+ChickenTypes.getName(dna.getTyping())+")";
                 if (json != null) {
+                    adapter.apply(entity, json);
                     if (this.displayResources && dna.isKnown()) {
                         if (!json.get("_customName").isJsonNull()) {
                             name = json.get("_customName").getAsString() + " " + name;
                         }
                         json.addProperty("_customNameVisible", true);
                         json.addProperty("_customName",name);
-                        adapter.apply(entity, json);
                     }
                 } else if (this.displayResources && dna.isKnown()) {
                     entity.setCustomName(name);
@@ -358,5 +373,16 @@ public class PocketChicken<T extends LivingEntity> extends SimpleSlimefunItem<It
         meta.setLore(getLore(json, dna));
 
         item.setItemMeta(meta);
+    }
+
+    @Override
+    public boolean canStack(@NotNull ItemMeta sfItemMeta, @NotNull ItemMeta itemMeta) {
+        boolean hasLoreItem = itemMeta.hasLore();
+        boolean hasLoreSfItem = sfItemMeta.hasLore();
+
+        if(hasLoreItem && hasLoreSfItem && SlimefunUtils.equalsLore(itemMeta.getLore(), sfItemMeta.getLore())) {
+            return true;
+        }
+        return !hasLoreItem && !hasLoreSfItem;
     }
 }
