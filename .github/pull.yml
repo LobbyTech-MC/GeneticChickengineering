@@ -1,0 +1,9 @@
+version: "1"
+rules:
+  - base: master
+    upstream: kii-chan-reloaded:master
+    mergeMethod: merge
+    conflictReviewers:
+      - weiii-joe
+      - xhuanfux
+      - xMikux
