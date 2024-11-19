@@ -17,7 +17,6 @@ import org.bukkit.inventory.meta.ItemMeta;
 import org.bukkit.metadata.FixedMetadataValue;
 import org.bukkit.persistence.PersistentDataContainer;
 import org.bukkit.persistence.PersistentDataType;
-import org.jetbrains.annotations.NotNull;
 
 import com.google.gson.JsonArray;
 import com.google.gson.JsonObject;
@@ -233,7 +232,7 @@ public class PocketChicken<T extends LivingEntity> extends SimpleSlimefunItem<It
             if (block.isPresent()) {
                 Block b = block.get();
                 Location l = b.getRelative(e.getClickedFace()).getLocation();
-                Chicken entity = b.getWorld().spawn(l.toCenterLocation(), Chicken.class);
+                Chicken entity = b.getWorld().spawn(l.zero().add(0.5, 0, 0.5), Chicken.class);
 
                 PersistentDataContainer container = e.getItem().getItemMeta().getPersistentDataContainer();
                 JsonObject json = container.get(adapterkey, (PersistentDataType<String, JsonObject>) adapter);
@@ -370,7 +369,7 @@ public class PocketChicken<T extends LivingEntity> extends SimpleSlimefunItem<It
     }
 
     @Override
-    public boolean canStack(@NotNull ItemMeta sfItemMeta, @NotNull ItemMeta itemMeta) {
+    public boolean canStack(ItemMeta sfItemMeta, ItemMeta itemMeta) {
         boolean hasLoreItem = itemMeta.hasLore();
         boolean hasLoreSfItem = sfItemMeta.hasLore();
 

@@ -14,6 +14,7 @@ import me.mrCookieSlime.Slimefun.Objects.SlimefunItem.abstractItems.AContainer;
 import org.bukkit.Material;
 import org.bukkit.NamespacedKey;
 import org.bukkit.World;
+import org.bukkit.command.CommandSender;
 import org.bukkit.entity.Chicken;
 import org.bukkit.entity.Entity;
 import org.bukkit.entity.LivingEntity;
@@ -212,7 +213,7 @@ public class GeneticChickengineering extends JavaPlugin implements SlimefunAddon
                 if (found.contains(uuid)) {
                     continue;
                 }
-                Entity chick = w.getEntity(UUID.fromString(uuid));
+                Entity chick = this.getServer().getEntity(UUID.fromString(uuid));
                 if (chick != null) {
                     found.add(uuid);
                 }

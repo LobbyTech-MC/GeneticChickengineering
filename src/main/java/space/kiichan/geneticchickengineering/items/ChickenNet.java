@@ -34,7 +34,7 @@ public class ChickenNet extends SimpleSlimefunItem<EntityInteractHandler> implem
                 Chicken chick = (Chicken) e.getRightClicked();
                 ItemStack pc = this.plugin.convert(chick);
                 World w = chick.getWorld();
-                Location l = chick.getLocation().toCenterLocation();
+                Location l = chick.getLocation().zero().add(0.5, 0, 0.5);
                 w.dropItemNaturally(l,pc);
                 w.playSound(l, Sound.ENTITY_CHICKEN_EGG, 1F, 1F);
                 chick.remove();

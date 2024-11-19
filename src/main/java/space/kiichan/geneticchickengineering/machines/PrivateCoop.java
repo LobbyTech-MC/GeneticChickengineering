@@ -55,7 +55,7 @@ public class PrivateCoop extends AContainer {
         MachineProcessor<CraftingOperation> processor = getMachineProcessor();
         if (processor.getOperation(b) != null) {
             if (Math.random() < 0.25) {
-                Location l = b.getLocation().toCenterLocation();
+                Location l = b.getLocation().zero().add(0.5, 0, 0.5);
                 l.getWorld().spawnParticle(Particle.HEART, l.add(0,0.5,0), 2, 0.2, 0, 0.2);
             }
             BlockMenu inv = StorageCacheUtils.getMenu(b.getLocation());

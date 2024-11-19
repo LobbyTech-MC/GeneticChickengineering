@@ -37,7 +37,7 @@ public class ResourceEgg extends SimpleSlimefunItem<ItemUseHandler> implements N
                     World w = place.getWorld();
                     if (w.getEnvironment() == World.Environment.NETHER) {
                         w.spawnParticle(Particle.CLOUD, place.getLocation().add(0.5,0,0.5), 5);
-                        w.playSound(place.getLocation().toCenterLocation(), Sound.BLOCK_LAVA_EXTINGUISH, 1F, 1F);
+                        w.playSound(place.getLocation().zero().add(0.5, 0, 0.5), Sound.BLOCK_LAVA_EXTINGUISH, 1F, 1F);
                     } else {
                         place.setType(this.resource);
                     }
@@ -76,7 +76,7 @@ public class ResourceEgg extends SimpleSlimefunItem<ItemUseHandler> implements N
             if (block.isPresent()) {
                 Block b = block.get();
                 Block place = b.getRelative(e.getClickedFace());
-                if (place.isReplaceable()) {
+                if (place.canPlace(b.getBlockData())) {
                     this.action.action(place);
                     if (e.getPlayer().getGameMode() != GameMode.CREATIVE) {
                         ItemUtils.consumeItem(e.getItem(), false);

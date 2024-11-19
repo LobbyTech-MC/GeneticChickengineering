@@ -59,7 +59,7 @@ public class MakeChicken extends Subcommand {
             HashMap<Integer,ItemStack> excess = ((Player) sender).getInventory().addItem(chick);
             for (Integer i: excess.keySet()) {
                 ItemStack dropchick = excess.get(i);
-                ((Player) sender).getWorld().dropItemNaturally( ((Player) sender).getLocation().toCenterLocation(), dropchick);
+                ((Player) sender).getWorld().dropItemNaturally( ((Player) sender).getLocation().zero().add(0.5, 0, 0.5), dropchick);
             }
         } else {
             sender.sendMessage("您没有权限执行此命令");
